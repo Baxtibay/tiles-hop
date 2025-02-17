@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tiles Hop</title>
+
+	<!-- Stylesheet  -->
+	<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+	<div id="drop-area">Drag & Drop <br> support: excell file</div>
+	<input type="file" id="excelFile" accept=".xlsx, .xls" style="display: none;" />
+	<div class="container-wrapper">
+		<div class="container">
+			<div class="box-container">
+				<div class="display-box" id="display1"></div>
+				<div class="box" onclick="copyText('-1432')">-1432</div>
+			</div>
+			<div class="box-container">
+				<div class="display-box" id="display2"></div>
+				<div class="box" onclick="copyText('-481')">-481</div>
+			</div>
+			<div class="box-container">
+				<div class="display-box" id="display3"></div>
+				<div class="box" onclick="copyText('459')">459</div>
+			</div>
+			<div class="box-container">
+				<div class="display-box" id="display4"></div>
+				<div class="box" onclick="copyText('1432')">1432</div>
+			</div>
+		</div>
+		<div class="buttons-container" id="buttonsContainer"></div>
+	</div>
+	<div id="modal" class="modal">Copied</div>
+
+	<!-- JS script  -->
+	<script src="./js/script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</body>
+
+</html>
