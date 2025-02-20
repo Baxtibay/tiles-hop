@@ -6,24 +6,6 @@
 }
 
 
-/* BACKGROUND COLORS */
-.pink-color {
-	background-color: #DC3C96FF;
-}
-
-.green-color {
-	background-color: green;
-}
-
-.red-color {
-	background-color: red;
-}
-
-.yellow-color {
-	background-color: yellow;
-}
-
-
 /* GLOBAL */
 html {
   box-sizing: border-box;
@@ -143,8 +125,6 @@ img {
 .main-container {
 	width: 40%;
 	display: flex;
-	/* border: 1px solid #000; */
-	/* box-shadow: 0px 1px 4px 4px rgba(0,0,0,0.06); */
 }
 
 
@@ -155,7 +135,6 @@ img {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* background-color: #fff; */
 }
 
 .display-box {
