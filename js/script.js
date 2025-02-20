@@ -62,7 +62,31 @@ function setActiveButton(button, row) {
 	document.getElementById('display2').textContent = row[1] || ''
 	document.getElementById('display3').textContent = row[2] || ''
 	document.getElementById('display4').textContent = row[3] || ''
+	// Show information in the excel 8-column
+	let extraContainer = document.getElementById("extraDataContainer")
+	if (!extraContainer) {
+		extraContainer = document.createElement("div")
+		extraContainer.id = "extraDataContainer"
+		extraContainer.style.marginTop = "20px"
+		extraContainer.style.padding = "10px"
+		extraContainer.style.border = "1px solid #6e86fd"
+		extraContainer.style.backgroundColor = "#f0f0f0"
+		extraContainer.style.cursor = "pointer" // Kursorda qo‘l chiqadi
+		extraContainer.addEventListener("click", copyExtraData) // Click event
+		document.querySelector(".extraDataContainer-wrapper").appendChild(extraContainer)
+	}
+	extraContainer.textContent = `Video name: ${row[7] || "N/A"}`
 }
+
+
+// Copy EXTRA DATA to clipboard
+function copyExtraData() {
+	const textToCopy = this.textContent.replace("Video name: ", "") // Faqatgina qiymatni nusxalash
+	navigator.clipboard.writeText(textToCopy).then(() => {
+		copyText("Copied!")
+	})
+}
+
 
 // SHOW MODAL Copy clipboard
 function copyText(text) {
@@ -74,6 +98,7 @@ function copyText(text) {
 		}, 2000)
 	})
 }
+
 
 // ROTATE INPUT FUNCTION 
 document.getElementById('numberInput').addEventListener('input', calculateResult)
@@ -99,10 +124,14 @@ function copyToClipboard() {
 	})
 }
 
-document.addEventListener('click', function (event) {
-	let inputField = document.getElementById('numberInput')
-	if (!inputField.contains(event.target)) {
+
+// REMOVE INPUT value
+const elResult = document.querySelector('#result')
+if(elResult) {
+	elResult.addEventListener('click', () => {
+		let inputField = document.getElementById('numberInput')
 		inputField.value = ""
-	}
-});
+	})
+}
+
 
