@@ -88,6 +88,20 @@ img {
 	font-size: 14px;
 }
 
+.date {
+	width: 30%;
+	padding: 4px;
+	border: 1px solid #000;
+}
+
+#currentDate {
+	margin: 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	margin-top: 10px;
+}
+
 
 /* DROP-AREA */
 #drop-area {
