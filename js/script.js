@@ -67,12 +67,6 @@ function setActiveButton(button, row) {
 	if (!extraContainer) {
 		extraContainer = document.createElement("div")
 		extraContainer.id = "extraDataContainer"
-		extraContainer.style.marginTop = "20px"
-		extraContainer.style.padding = "10px"
-		extraContainer.style.border = "1px solid #6e86fd"
-		extraContainer.style.backgroundColor = "#f0f0f0"
-		extraContainer.style.cursor = "pointer" // Kursorda qo‘l chiqadi
-		extraContainer.addEventListener("click", copyExtraData) // Click event
 		document.querySelector(".extraDataContainer-wrapper").appendChild(extraContainer)
 	}
 	extraContainer.textContent = `Video name: ${row[7] || "N/A"}`
@@ -81,7 +75,7 @@ function setActiveButton(button, row) {
 
 // Copy EXTRA DATA to clipboard
 function copyExtraData() {
-	const textToCopy = this.textContent.replace("Video name: ", "") // Faqatgina qiymatni nusxalash
+	const textToCopy = this.textContent.replace("Video name: ", "") // Copy only value
 	navigator.clipboard.writeText(textToCopy).then(() => {
 		copyText("Copied!")
 	})
@@ -103,7 +97,6 @@ function copyText(text) {
 // ROTATE INPUT FUNCTION 
 document.getElementById('numberInput').addEventListener('input', calculateResult)
 document.getElementById('multiplierSelect').addEventListener('change', calculateResult);
-document.getElementById('result').addEventListener('click', copyToClipboard);
 
 function calculateResult() {
 	let inputValue = parseFloat(document.getElementById('numberInput').value) || 0
@@ -111,17 +104,6 @@ function calculateResult() {
 	let result = inputValue + (360 * multiplier)
 	document.getElementById('result').innerText = result
 	document.getElementById('result').classList.add('bg-color')
-}
-
-function copyToClipboard() {
-	let resultText = document.getElementById('result').innerText
-	navigator.clipboard.writeText(resultText).then(() => {
-		let modal = document.getElementById("modal")
-		modal.style.display = "block"
-		setTimeout(function () {
-			modal.style.display = "none"
-		}, 2000)
-	})
 }
 
 
@@ -134,4 +116,24 @@ if(elResult) {
 	})
 }
 
+// CLICK FOR COPY CLIPBOARD
+document.querySelector(".copy-text").addEventListener("click", function() {
+	copyClipboard(this.textContent)
+});
 
+// CLICK FOR COPY CLIPBOARD
+document.querySelector("#result").addEventListener("click", function() {
+	copyClipboard(this.textContent)
+});
+
+
+// **Clipboard function**
+function copyClipboard(text) {
+	navigator.clipboard.writeText(text).then(() => {
+		let modal = document.getElementById("modal")
+		modal.style.display = "block"
+		setTimeout(function () {
+			modal.style.display = "none"
+		}, 2000)
+	})
+}

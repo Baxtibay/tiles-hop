@@ -117,6 +117,7 @@ img {
 /* CONTAINER */
 .container-wrapper {
 	width: 100%;
+	margin-bottom: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -269,4 +270,30 @@ img {
 
 #result:hover {
 	opacity: 0.8;
+}
+
+
+/* EXTRA DATA WRAPPER  */
+.extraDataContainer-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.copy-text {
+	padding: 4px;
+	border: 1px solid #6e86fd;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	cursor: pointer;
+	border-right: none;
+}
+
+#extraDataContainer {
+	padding: 4px;
+	border: 1px solid #6e86fd;
+	cursor: pointer;
+	border-top-right-radius: 12px;
+	border-left: none;
+	border-bottom-right-radius: 12px;
 }
