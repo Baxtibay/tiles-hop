@@ -115,9 +115,17 @@ img {
 
 
 /* DROP-AREA */
+.drop-area-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	justify-content: space-around;
+}
+
 #drop-area {
 	width: 470px;
 	height: 150px;
+	margin-right: 20px;
 	padding: 4px;
 	border-radius: 20px;
 	border: 2px dashed var(--primary-color);
@@ -136,6 +144,40 @@ img {
 
 #drop-area.highlight {
 	border-color: #333;
+}
+
+.site-links {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+}
+
+.site-link {
+	display: flex;
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+.site-link:hover {
+	opacity: 0.6;
+}
+
+.site-link:not(:last-child) {
+	margin-bottom: 5px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+	color: inherit;
+	margin-right: 5px;
+}
+
+.like {
+	color: red;
 }
 
 

@@ -11,6 +11,12 @@
 
 	<!-- Stylesheet  -->
 	<link rel="stylesheet" href="./css/styles.css">
+
+	<!-- Icons link -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=thumb_up" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dns" />
 </head>
 
 <body>
@@ -27,8 +33,22 @@
 			</div>
 		</div>
 	</header>
-	<div id="drop-area">Drag & Drop <br> support: excell file</div>
-	<input type="file" id="excelFile" accept=".xlsx, .xls" style="display: none;" />
+	<div class="drop-area-container">
+		<div class="drop-area-wrapper">
+			<div id="drop-area">Drag & Drop <br> support: excell file</div>
+			<input type="file" id="excelFile" accept=".xlsx, .xls" style="display: none;" />
+		</div>
+		<div class="site-links">
+			<a class="site-link" href="https://studio.upstream.so/stream?intent=register&sso=1" target="_blank">
+				<span class="material-symbols-outlined">dns</span>
+				Online Live Server
+			</a>
+			<a class="site-link" href="https://www.smmraja.com/dashboard" target="_blank">
+				<span class="material-symbols-outlined like">thumb_up</span>
+				Like
+			</a>
+		</div>
+	</div>
 	<div class="container-wrapper">
 		<div class="buttons-container" id="buttonsContainer"></div>
 		<div class="main-container">
