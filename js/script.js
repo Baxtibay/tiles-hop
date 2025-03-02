@@ -1,17 +1,31 @@
 const dropArea = document.getElementById("drop-area");
 const fileInput = document.getElementById("excelFile");
+const progressContainer = document.getElementById("progress-container");
 let activeButton = null;
 let excelData = [];
 
 // EXCEL FAYLNI YUKLASH
+
+
 dropArea.addEventListener("click", () => fileInput.click());
 dropArea.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropArea.classList.add("highlight");
+    // PROGRESS BAR ------------ START
+    // Progress barni ko‘rsatish va boshlang‘ich holatni tiklash
+    const progressBar = document.getElementById("progress-bar");
+    
+    progressContainer.classList.remove("hidden");
+    // progressContainer.classList.add("animated");
+    progressBar.style.width = "0%";
+    setTimeout(() => {
+        progressContainer.classList.add("animated"); // Yangi animatsiyani qo‘shish
+    }, 10);
+    // PROGRESS BAR ------------ END
 });
 dropArea.addEventListener("dragleave", () => dropArea.classList.remove("highlight"));
 dropArea.addEventListener("drop", (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     dropArea.classList.remove("highlight");
     const file = e.dataTransfer.files[0];
     fileInput.files = e.dataTransfer.files;
@@ -25,7 +39,32 @@ fileInput.addEventListener("change", (event) => {
 
 function handleFile(file) {
     if (!file) return;
+
+    // PROGRESS BAR ------------ START
+    // Progress barni ko‘rsatish va boshlang‘ich holatni tiklash
+    const progressContainer = document.getElementById("progress-container");
+    const progressBar = document.getElementById("progress-bar");
+    setTimeout(() => {
+        progressContainer.classList.add("animated"); // Yangi animatsiyani qo‘shish
+    }, 5);
+    
+    progressContainer.classList.remove("hidden");
+    progressBar.style.width = "10%";
+    // PROGRESS BAR ------------ END
     const reader = new FileReader();
+    let progress = 0;
+
+    // Progress barni yuklash jarayonida yangilash --------- START
+    // Har 50ms da progressni oshirib borish
+    const interval = setInterval(() => {
+        if (progress < 90) {
+            progress += 5;
+            progressBar.style.width = progress + "%";
+        } 
+    }, 50);
+    // Progress barni yuklash jarayonida yangilash --------- END
+
+
     reader.readAsArrayBuffer(file);
     reader.onload = function (event) {
         const data = new Uint8Array(event.target.result);
@@ -34,6 +73,18 @@ function handleFile(file) {
         const sheet = workbook.Sheets[sheetName];
         excelData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
         createButtons(excelData);
+
+        // Yuklash tugagandan keyin progress barni 100% qilish va 0.5s dan keyin yashirish START
+        // Progressni 100% ga yetkazish va intervalni to‘xtatish
+        clearInterval(interval);
+        progressBar.style.width = "100%";
+
+        // 0.5s kutib, progress barni yashirish
+        setTimeout(() => {
+            progressContainer.classList.add("hidden");
+        }, 500);
+        // Yuklash tugagandan keyin progress barni 100% qilish va 0.5s dan keyin yashirish END
+
     };
 }
 
