@@ -206,18 +206,54 @@ img {
 }
 
 .display-box {
-	position: absolute;
+	position: relative;
+	display: inline-block;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 50px;
 	display: flex;
+	border: 1px solid var(--primary-color);
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 	font-size: 18px;
 	font-weight: bold;
 	border-radius: 5px;
 	color: var(--primary-color);
+	z-index: 20;
+}
+
+.display-box::after {
+	content: "Teg"; /* Chiqqan yozuv */
+	position: absolute;
+	top: -30px; /* Element ustida chiqishi uchun */
+	left: 50%;
+	transform: translateX(-50%); /* O‘rtaga joylash */
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 12px;
+	border-radius: 5px;
+	white-space: nowrap;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	pointer-events: none; /* Matn bosilganda xalaqit bermasligi uchun */
+}
+
+.display-box:hover {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+
+.display-box:hover::after {
+	background-color: var(--primary-color);
+	color: #fff;
+	opacity: 1; /* Hover bo‘lganda yozuv chiqadi */
+}
+
+.display-box:active {
+	opacity: 0.6;
 }
 
 .box {

@@ -205,3 +205,18 @@ function copyClipboard(text) {
 	})
 }
 // COPY THE WORD "VS" ------------------------------ END
+
+// copy to clipboard ---------------------------- start
+document.querySelectorAll(".display-box").forEach(element => {
+    element.addEventListener("click", function () {
+        const text = this.textContent || this.innerText; // Elementdagi matnni olish
+        navigator.clipboard.writeText(text).then(() => {
+            let modal = document.getElementById("modal")
+		    modal.style.display = "block"
+            setTimeout(function () {
+                modal.style.display = "none"
+            }, 2000)
+        });
+    });
+});
+// copy to clipboard ---------------------------- end
